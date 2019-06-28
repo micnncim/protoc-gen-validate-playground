@@ -7,7 +7,15 @@ import (
 )
 
 func main() {
-	p := new(pb.Person)
+	p := &pb.Person{
+		Id:    1000,
+		Email: "person@mail.net",
+		Name:  "Protocol Buffers",
+		Home: &pb.Person_Location{
+			Lat: 100,
+			Lng: 0,
+		},
+	}
 	err := p.Validate()
 	if e, ok := err.(pb.PersonValidationError); ok {
 		log.Println(e.Error())
