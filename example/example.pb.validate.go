@@ -65,7 +65,7 @@ func (m *Person) Validate() error {
 	if !_Person_Name_Pattern.MatchString(m.GetName()) {
 		return PersonValidationError{
 			field:  "Name",
-			reason: "value does not match regex pattern \"^[^[0-9]A-Za-z]+( [^[0-9]A-Za-z]+)*$\"",
+			reason: "value does not match regex pattern \"^[0-9A-Za-z]+( [0-9A-Za-z]+)*$\"",
 		}
 	}
 
@@ -193,7 +193,7 @@ var _ interface {
 	ErrorName() string
 } = PersonValidationError{}
 
-var _Person_Name_Pattern = regexp.MustCompile("^[^[0-9]A-Za-z]+( [^[0-9]A-Za-z]+)*$")
+var _Person_Name_Pattern = regexp.MustCompile("^[0-9A-Za-z]+( [0-9A-Za-z]+)*$")
 
 // Validate checks the field values on Person_Location with the rules defined
 // in the proto definition for this message. If any rules are violated, an
